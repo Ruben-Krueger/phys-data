@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PhysData</title>
+  <% include partials/head.ejs%>
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+  <script>
+      // Initialize Firebase
+      var config = {
+          apiKey: "AIzaSyCWMtl3kKoLsy4TfCTZbDgs6PIstvLv75Y",
+          authDomain: "affine-finance-1539407805284.firebaseapp.com",
+          databaseURL: "https://affine-finance-1539407805284.firebaseio.com",
+          projectId: "affine-finance-1539407805284",
+          storageBucket: "affine-finance-1539407805284.appspot.com",
+          messagingSenderId: "406871698063"
+      };
+      firebase.initializeApp(config);
+  </script>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+  <div class="row">
+
+    <div class="col">
+      <h1>PhysData </h1>
+    </div>
+
+    <div class="col">
+      <div class="search">
+        <input class="form-control" type="text" id="search_bar" placeholder="Name" aria-label="Search">
+      </div>
+    </div>
+
+    <div class="col">
+      <button type="button" class="btn btn-primary" onclick="search()">Search</button>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=san%20francisco&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" align="middle"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="jumbotron">
+        <h1 class="display-4" id="title">Hello!</h1>
+        <p class="lead" id="address">Search for a physician at the top.</p>
+        <p class="lead"id="city/state/zip"></p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Random</a>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<script>
+
+    function search() {
+
+        let name = document.getElementById('search_bar').value
+
+        if(name === "") return;
+
+        var ref = firebase.database().ref('physicians/' + name);
+
+
+        ref.on('value', function(snapshot) {
+            console.log(snapshot.val());
+            var data = snapshot.val();
+
+            if(data != null) {
+                document.getElementById('title').innerText = data.name;
+                document.getElementById('address').innerText = data.street;
+                document.getElementById('city/state/zip').innerText = data.city + ', ' + data.state + ' ' + data.zip;
+
+            }
+        });
+
+
+    }
+
+
+</script>
+
+<% include partials/footer.ejs%>
+</body>
+</html>
+
+
+
