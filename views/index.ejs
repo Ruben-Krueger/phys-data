@@ -18,6 +18,7 @@
       firebase.initializeApp(config);
   </script>
 
+
 </head>
 <body>
 <div class="container-fluid">
@@ -36,37 +37,52 @@
     </div>
 
     <div class="col">
-      <button type="button" class="btn btn-primary" onclick="search()">Search</button>
+      <button type="button" id="button" class="btn btn-primary" onclick="search()">Search</button>
     </div>
-
   </div>
 
   <div class="row">
 
     <div class="col">
-      <div class="mapouter">
-        <div class="gmap_canvas">
-          <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=san%20francisco&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" align="middle"></iframe>
-        </div>
-      </div>
+      <div id="map"></div>
+
     </div>
 
     <div class="col">
-      <div class="jumbotron">
-        <h1 class="display-4" id="title">Hello!</h1>
-        <p class="lead" id="address">Search for a physician at the top.</p>
-        <p class="lead"id="city/state/zip"></p>
-        <hr class="my-4">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Random</a>
-        </p>
+        <div class="jumbotron">
+          <h1 class="display-4" id="title">Hello!</h1>
+          <p class="lead" id="address">Search for a physician at the top.</p>
+          <p class="lead" id="city/state/zip"></p>
+          <hr class="my-4">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Random</a>
+        </div>
       </div>
-
-    </div>
-
   </div>
 
 
 </div>
+
+
+<script>
+
+    function initMap() {
+        var myLatLng = {lat: 39.8283, lng: -98.5795};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: myLatLng
+        });
+
+        // var marker = new google.maps.Marker({
+        //     position: myLatLng,
+        //     map: map,
+        //     title: 'Hello World!'
+        // });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLRPVgRK749OxEcDQ4sDYpwZynhAVChTg&callback=initMap">
+</script>
 
 
 
@@ -85,7 +101,10 @@
             console.log(snapshot.val());
             var data = snapshot.val();
 
-            if(data != null) {
+            if(data == null) {
+                document.getElementById('title').innerText = 'None found';
+            }
+            else {
                 document.getElementById('title').innerText = data.name;
                 document.getElementById('address').innerText = data.street;
                 document.getElementById('city/state/zip').innerText = data.city + ', ' + data.state + ' ' + data.zip;

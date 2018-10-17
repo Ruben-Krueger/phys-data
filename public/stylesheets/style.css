@@ -1,9 +1,28 @@
+
+
 footer {
   margin-bottom: 10px;
   font-size: 20px;
 }
 
 
-body {
+#search_bar {
   margin-top: 10px;
+}
+
+#button {
+  margin-top: 10px;
+}
+
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
