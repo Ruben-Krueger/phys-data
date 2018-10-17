@@ -63,30 +63,15 @@
 </div>
 
 
-<script>
-
-    function initMap() {
-        var myLatLng = {lat: 39.8283, lng: -98.5795};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: myLatLng
-        });
-
-        // var marker = new google.maps.Marker({
-        //     position: myLatLng,
-        //     map: map,
-        //     title: 'Hello World!'
-        // });
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLRPVgRK749OxEcDQ4sDYpwZynhAVChTg&callback=initMap">
-</script>
 
 
 
 <script>
+
+    // global map variable
+    var map;
+
+    let geocoder;
 
     function search() {
 
@@ -108,7 +93,7 @@
                 document.getElementById('title').innerText = data.name;
                 document.getElementById('address').innerText = data.street;
                 document.getElementById('city/state/zip').innerText = data.city + ', ' + data.state + ' ' + data.zip;
-
+                addMarker(data);
             }
         });
 
@@ -116,7 +101,41 @@
     }
 
 
+    function addMarker(data) {
+
+        geocoder.geocode({'address': data.street}, function (results, status) {
+            if (status === 'OK') {
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    title: data.name
+                });
+                console.log(results[0]);
+            } else {
+                console.log('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    function initMap() {
+        // roughly center of the US
+        var myLatLng = {lat: 39.8283, lng: -98.5795};
+
+         map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: myLatLng
+        });
+
+        geocoder = new google.maps.Geocoder();
+
+
+    }
 </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLRPVgRK749OxEcDQ4sDYpwZynhAVChTg&callback=initMap">
+</script>
+
+
 
 <% include partials/footer.ejs%>
 </body>
