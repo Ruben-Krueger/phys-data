@@ -45,13 +45,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="150" />
-          <entry key="ejs" value="791" />
+          <entry key="ejs" value="828" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="150" />
-          <entry key="EJS" value="791" />
+          <entry key="EJS" value="828" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -91,10 +91,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="70" column="26" lean-forward="true" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+            <state relative-caret-position="2109">
+              <caret line="111" column="27" lean-forward="true" selection-start-line="111" selection-start-column="27" selection-end-line="111" selection-end-column="27" />
               <folding>
-                <marker date="1539759926221" expanded="true" signature="1196:1554" ph="..." />
+                <marker date="1539760177350" expanded="true" signature="1196:1554" ph="..." />
               </folding>
             </state>
           </provider>
@@ -231,12 +231,12 @@
       <option name="presentableId" value="Default" />
       <updated>1539717167061</updated>
       <workItem from="1539717173612" duration="358000" />
-      <workItem from="1539718877919" duration="6330000" />
+      <workItem from="1539718877919" duration="6733000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6688000" />
+    <option name="totallyTimeSpent" value="7091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-72" y="23" width="1680" height="947" extended-state="0" />
@@ -305,10 +305,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="70" column="26" lean-forward="true" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+        <state relative-caret-position="2109">
+          <caret line="111" column="27" lean-forward="true" selection-start-line="111" selection-start-column="27" selection-end-line="111" selection-end-column="27" />
           <folding>
-            <marker date="1539759926221" expanded="true" signature="1196:1554" ph="..." />
+            <marker date="1539760177350" expanded="true" signature="1196:1554" ph="..." />
           </folding>
         </state>
       </provider>
