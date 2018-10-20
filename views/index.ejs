@@ -79,8 +79,8 @@
 
         if(name === "") return;
 
-        var ref = firebase.database().ref('physicians/' + name);
 
+        var ref = firebase.database().ref('physicians/' + name.toLowerCase());
 
         ref.on('value', function(snapshot) {
             console.log(snapshot.val());
@@ -90,7 +90,11 @@
                 document.getElementById('title').innerText = 'None found';
             }
             else {
-                document.getElementById('title').innerText = data.name;
+
+                name = data.name;
+                name = name.split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+
+                document.getElementById('title').innerText = name;
                 document.getElementById('address').innerText = data.street;
                 document.getElementById('city/state/zip').innerText = data.city + ', ' + data.state + ' ' + data.zip;
                 addMarker(data);
